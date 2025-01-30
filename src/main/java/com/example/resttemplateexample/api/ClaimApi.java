@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/claims")
 @RequiredArgsConstructor
@@ -47,6 +49,18 @@ public class ClaimApi {
     @PutMapping("/update")
     public UserModel update() {
         return userClient.updateUser(102,"Ali100@Gmail.com");
+    }
+
+
+    @DeleteMapping("/delete")
+    void delete() {
+        userClient.deleteUser(102);
+    }
+
+
+    @GetMapping("/getAllUsers")
+    public List<UserModel> getAllUsers(){
+        return userClient.getAllUser();
     }
 
 //
